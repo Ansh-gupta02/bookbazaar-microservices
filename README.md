@@ -149,22 +149,21 @@ Kubernetes cluster handles deployment and service routing using NodePort.
 ## 📸 Screenshots
 
 ### 🐳 Docker Desktop – Running Containers
-![Docker Screenshot](./screenshots/image(1).png)
-![Docker Screenshot](./screenshots/image(2).png)
-
-
----
-
-### ☸️ Kubernetes Deployments (via kubectl)
-![Kubernetes Deployments](./screenshots/image(3).png)
+![Docker 1](./screenshots/image%20(1).png)
+![Docker 2](./screenshots/image%20(2).png)
 
 ---
 
-### 📮 Postman API Testing
-![Postman Testing](./screenshots//image(4).png)
-![Postman Testing](./screenshots//image(5).png)
+### ☸️ Kubernetes – Deployments or Services
+![Kubernetes](./screenshots/image%20(3).png)
 
+---
 
+### 📮 Postman – API Testing
+![Postman 1](./screenshots/image%20(4).png)
+![Postman 2](./screenshots/image%20(5).png)
+
+---
 ---
 
 ## 🚀 Running Without Kubernetes (Local Mode)
