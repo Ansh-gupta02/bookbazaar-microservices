@@ -1,94 +1,100 @@
-# 🔒 BookBazaar Microservices — Task 4: SonarQube Security Scanning Integration
+# Task 4 — SonarQube Security Scanning Integration (BookBazaar Microservices)
 
-This repository documents the integration of **SonarQube** into the **BookBazaar Microservices** architecture as part of **Task 4** for the CodTech Internship. The purpose of this task is to automate static code analysis using **SonarScanner** and identify security vulnerabilities and code quality issues.
-
----
-
-## 🚀 Objective
-
-Integrate **SonarQube** into the CI/CD process to perform static code analysis and generate a report on:
-- Bugs 🐞
-- Vulnerabilities 🔐
-- Code smells 💨
-- Security hotspots 🔥
+This task demonstrates how **SonarQube** was integrated into the **BookBazaar Microservices** project to scan for code vulnerabilities, bugs, and code smells as part of a DevSecOps pipeline.
 
 ---
 
-## 🛠 Tech Stack Used
+##  Task Objective
 
-| Category          | Tools / Tech                             |
-|-------------------|-------------------------------------------|
-| Microservices     | Node.js, Express.js                      |
-| Orchestration     | Kubernetes                               |
-| Containerization  | Docker                                   |
-| Security Scanning | SonarQube (via Docker), SonarScanner CLI |
-| OS                | Windows 11                               |
+✅ Integrate **SonarQube** to statically analyze all microservices (`auth`, `book`, `order`)  
+✅ Capture issues, vulnerabilities, and bad practices  
+✅ Push results to GitHub for review and evidence  
 
 ---
 
-## ⚙️ SonarQube Setup & Configuration
+## 🧰 Tools Used
 
-### ✅ Tools Used:
-- **SonarQube (LTS version)** — via Docker on port `9000`
-- **SonarScanner CLI** — installed locally
-- **Java 17 (Eclipse Adoptium)** — required for SonarScanner
+| Purpose              | Tool                      |
+|----------------------|---------------------------|
+| Codebase             | Node.js + Express         |
+| Containerization     | Docker                    |
+| Orchestration        | Kubernetes                |
+| Security Scanning    | SonarQube (LTS, Docker)   |
+| CLI Scanner          | SonarScanner 7.1 (local)  |
+| OS                   | Windows 11 (PowerShell)   |
 
-### 🧪 SonarScanner Command
+---
 
-sonar-scanner.bat ^
-  -D"sonar.projectKey=BookBazaar-Microservices" ^
-  -D"sonar.sources=." ^
-  -D"sonar.host.url=http://localhost:9000" ^
-  -D"sonar.login=your_token_here"
+## ⚙️ Setup Steps
 
-  
-📂 Sonar Project Properties (sonar-project.properties)
-
-sonar.projectKey=BookBazaar-Microservices
-sonar.sources=.
-sonar.exclusions=**/node_modules/**, **/*.test.js
-sonar.host.url=http://localhost:9000
-sonar.language=js
-
-
-📸 Screenshots
-🔹 Terminal Screenshots
-
-Description	Screenshot
-Docker Desktop showing SonarQube	
-K8s Pods & Services running	
-Postman test confirming endpoints	
-
-🔹 SonarQube Dashboard Screenshots
-Description	Screenshot
-SonarQube Dashboard Overview	
-Issues Identified	
-Security Hotspots / Summary	
-
-📊 Result Summary
-✅ Successfully scanned all 3 microservices (auth, book, order)
-
-🐞 Bugs and code smells reported
-
-🔐 Security hotspots highlighted
-
-📉 Suggestions on code improvement from SonarQube
-
-📌 How to View the Report
-Run SonarQube using Docker:
+### ✅ Step 1: Run SonarQube via Docker
 
 
 docker run -d --name sonarqube -p 9000:9000 sonarqube:lts
-Navigate to http://localhost:9000
+Then, open: http://localhost:9000
+Login, and create a new project manually.
 
-Login using the token, and view the BookBazaar-Microservices project dashboard.
+✅ Step 2: Install & Configure SonarScanner CLI
+Installed SonarScanner in C:\sonarscanner
 
-✅ Task Status
- Installed and Configured SonarQube
+Added to environment PATH
 
- Integrated SonarScanner CLI
+Verified using:
 
- Performed static code analysis
+sonar-scanner -v
+
+
+✅ Step 3: sonar-project.properties Configuration
+properties
+
+sonar.projectKey=BookBazaar-Microservices
+
+sonar.sources=.
+
+sonar.exclusions=**/node_modules/**, **/*.test.js
+
+sonar.host.url=http://localhost:9000
+
+sonar.language=js
+
+
+✅ Step 4: Run the SonarScanner
+
+
+sonar-scanner.bat ^
+  -D"sonar.projectKey=BookBazaar-Microservices" ^
+  
+  -D"sonar.sources=." ^
+  
+  -D"sonar.host.url=http://localhost:9000" ^
+  
+  -D"sonar.login=<your_token_here>"
+  
+📸 Terminal Evidence (Execution Proof)
+
+![Docker SonarQube Running](./screenshots/image%20(22).png)
+![SonarScanner Running](./screenshots/image%20(23).png)
+![Scanner Success Log](./screenshots/image%20(24).png)
+
+📊 SonarQube Analysis Report
+Description	Screenshot
+![Project Dashboard](./screenshots/image%20(12).png)
+![Bugs & Vulnerabilities](./screenshots/image%20(13).png)
+![Security Hotspots](./screenshots/image%20(14).png)
+
+
+
+✅ Deliverables
+ SonarQube security scanning integrated
+
+ Terminal proof of setup and scan
+
+ Screenshots of security report
+
+ GitHub project and documentation completed
+
+📁 Branching Strategy
+This task was completed in a separate branch task4-sonarqube to maintain isolation from Task 3 work.
 
  Screenshots collected and documented
 
