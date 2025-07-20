@@ -34,6 +34,7 @@ bookbazaar/
 
 └── order-deployment.yaml
 
+└── screenshots/
 
 ---
 
