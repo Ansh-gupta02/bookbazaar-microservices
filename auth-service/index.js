@@ -7,6 +7,11 @@ app.use(express.json());
 
 const users = [];
 
+app.get('/', (req, res) => {
+  res.send("✅ Auth Service is Running");
+});
+
+
 app.post('/signup', (req, res) => {
     const { username, password } = req.body;
     users.push({ username, password });

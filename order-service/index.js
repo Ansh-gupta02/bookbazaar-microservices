@@ -6,6 +6,10 @@ app.use(express.json());
 
 let orders = [];
 
+app.get('/', (req, res) => {
+  res.send("📦 Order Service is Running");
+});
+
 app.post('/orders', (req, res) => {
     orders.push(req.body);
     res.json({ message: 'Order placed' });
